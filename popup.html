@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CurseForge Direct Downloads</title>
+  <style>
+    :root{color-scheme:light dark;font:13px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+    *{box-sizing:border-box}
+    body{width:370px;margin:0;padding:18px;color:CanvasText;background:Canvas}
+    header{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+    header img{width:38px;height:38px}
+    h1{font-size:16px;line-height:1.2;margin:0;font-weight:700}
+    .subtitle{margin:3px 0 0;color:GrayText;font-size:11px}
+    .section{border-top:1px solid color-mix(in srgb,CanvasText 14%,transparent);padding-top:13px;margin-top:13px}
+    .section-title{font-size:11px;text-transform:uppercase;letter-spacing:.09em;color:GrayText;font-weight:700;margin:0 0 10px}
+    label.field{display:block;font-weight:600;margin-bottom:6px}
+    input[type=password],input[type=text]{width:100%;padding:9px 10px;border:1px solid color-mix(in srgb,CanvasText 25%,transparent);border-radius:8px;background:Field;color:FieldText;outline-offset:2px}
+    .key-wrap{display:flex;gap:7px}
+    .key-wrap input{min-width:0;flex:1}
+    button{border:0;border-radius:8px;padding:9px 12px;font:inherit;font-weight:650;cursor:pointer;background:#7651d5;color:white}
+    button.secondary{background:color-mix(in srgb,CanvasText 12%,Canvas);color:CanvasText}
+    button:disabled{opacity:.55;cursor:wait}
+    .actions{display:flex;gap:8px;margin-top:9px}
+    .actions button{flex:1}
+    .check-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:7px 0}
+    .check-row strong{display:block;font-weight:600}
+    .check-row small{display:block;color:GrayText;font-size:11px;margin-top:1px}
+    input[type=checkbox]{width:16px;height:16px;margin:2px 1px 0 0;accent-color:#7651d5;flex:0 0 auto}
+    .folder-label{display:block;font-weight:600;margin:7px 0 6px}
+    .hint{font-size:11px;color:GrayText;margin:6px 0 0}
+    #status{font-size:12px;min-height:18px;margin:10px 0 0;color:GrayText;overflow-wrap:anywhere}
+    #status[data-state=success]{color:#26965e}
+    #status[data-state=error]{color:#d14a4a}
+    footer{display:flex;justify-content:space-between;gap:8px;margin-top:12px;padding-top:10px;border-top:1px solid color-mix(in srgb,CanvasText 14%,transparent);font-size:11px;color:GrayText}
+    a{color:inherit}
+  </style>
+</head>
+<body>
+  <header>
+    <img src="icons/icon48.png" alt="">
+    <div>
+      <h1>CurseForge Direct Downloads</h1>
+      <p class="subtitle">Quick settings · Version 2.5.0</p>
+    </div>
+  </header>
+
+  <section>
+    <p class="section-title">API authentication</p>
+    <label class="field" for="apiKey">CurseForge API key</label>
+    <div class="key-wrap">
+      <input id="apiKey" type="password" autocomplete="off" spellcheck="false" aria-label="CurseForge API key">
+      <button id="toggleKey" class="secondary" type="button" aria-label="Show API key">Show</button>
+    </div>
+    <div class="actions">
+      <button id="save" type="button">Save settings</button>
+      <button id="test" class="secondary" type="button">Test key</button>
+    </div>
+    <p class="hint">Your API key is stored locally in this browser.</p>
+  </section>
+
+  <section class="section">
+    <p class="section-title">Download behavior</p>
+    <label class="check-row">
+      <span><strong>Enable direct downloads</strong><small>Intercept CurseForge file download links.</small></span>
+      <input id="directDownloadsEnabled" type="checkbox">
+    </label>
+    <label class="check-row">
+      <span><strong>Confirm before downloading</strong><small>Show a confirmation prompt for each file.</small></span>
+      <input id="confirmBeforeDownload" type="checkbox">
+    </label>
+    <label class="check-row">
+      <span><strong>Ask where to save each file</strong><small>Open Chrome's Save As dialog.</small></span>
+      <input id="askWhereToSave" type="checkbox">
+    </label>
+  </section>
+
+  <section class="section">
+    <p class="section-title">File organization</p>
+    <label class="folder-label" for="downloadSubfolder">Downloads subfolder</label>
+    <input id="downloadSubfolder" type="text" maxlength="80" placeholder="Leave blank to use Downloads root">
+    <p class="hint">Example: Mods/CurseForge. The folder is created by Chrome when needed.</p>
+    <label class="check-row">
+      <span><strong>Cache project IDs</strong><small>Faster repeat downloads; disable to always look up projects.</small></span>
+      <input id="cacheProjectIds" type="checkbox">
+    </label>
+  </section>
+
+  <div class="actions">
+    <button id="restore" class="secondary" type="button">Restore defaults</button>
+    <button id="clearCache" class="secondary" type="button">Clear project cache</button>
+  </div>
+  <p id="status" role="status" aria-live="polite"></p>
+
+  <footer>
+    <a href="https://support.curseforge.com/support/solutions/articles/9000208346-about-the-curseforge-api-and-how-to-apply-for-a-key" target="_blank" rel="noreferrer">API key help</a>
+    <span>Settings are saved in Chrome</span>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
