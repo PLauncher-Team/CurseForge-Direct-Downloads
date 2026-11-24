@@ -4,7 +4,6 @@ Chrome extension that intercepts CurseForge Minecraft mod download links and dow
 
 ## Features
 
-- Popup settings in English
 - API key testing
 - Toggle interception
 - Optional confirmation before downloads
