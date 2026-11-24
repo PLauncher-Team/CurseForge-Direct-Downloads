@@ -23,10 +23,6 @@ Chrome extension that intercepts CurseForge Minecraft mod download links and dow
 
 The extension includes a default key value. You can edit or replace it in the popup settings.
 
-## GitGuardian
-
-If GitGuardian flags the intentionally bundled default key, mark that specific finding as ignored using GitGuardian's ignore workflow rather than disabling secret scanning globally. For ggshield, run `ggshield secret ignore --last-found` after the relevant scan; it records the ignored match in `.gitguardian.yaml`.
-
 ## License
 
 MIT
